@@ -6,18 +6,20 @@
 
 void child(int row, int column, int array[row][column]);
 //void child(int *, int, int);
-int parent();
+void parent();
 
 int main() {
+	pid_t pid;	
 	int array[2][2];
 	int i,row =2 ,column =2;
-	//somearray = (int **)array;
 	while (i<2) {
-		fork();
-		child(2,2,array);
+		if (pid = fork())
+			child(2,2,array);
+		else
+			parent();
+		
 		i++;
 	}
-//	parent();
 	return 0;
 }
 
@@ -29,17 +31,17 @@ void child(int row, int column, int array[row][column]) {
 	printf("I am the child.\n");
 	FILE* file;
 	file = fopen("somefile2.txt","a+");
-	fprintf(file,"%c\n",sum);
+	fprintf(file,"%d\n",sum);
 	fclose(file);	
+	exit(0);
 }
 
-/*
-int parent() {
+void parent() {
 	FILE* newfile;
+	char *a; int i; char buffer[1024];
 	newfile = fopen("somefile2.txt","r");
-	while (newfile != EOF) {
-		
-	}
+	while ( fgets(buffer,1024,newfile) > 0 )
+		printf("%s",buffer);
 	
+	printf("I am the parent.");
 }
-*/

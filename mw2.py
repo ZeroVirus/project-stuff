@@ -3,9 +3,9 @@ import math
 
 #Simple MasterWorker Application using fork(). 
 #Given string s, the program reverses the first two char in string
-#And so on until it reaches end of string.
+#Continue doing so on until it reaches end of string.
 #If the len(s) is odd, then the last character's position remains the same.
-
+#No need for locking mechanism
 
 def worker(prev,next):
     rev = next+prev; #Reverse the two char string
@@ -27,9 +27,9 @@ def master(s):
                         
 if __name__ == "__main__":
     s="";
-    stringarr = master("ONPNRATIEIS");
+    stringarr = master("ONPNRATIEIS"); 
     
-    for i in range(0,len(stringarr)):
+    for i in range(0,len(stringarr)):  #Techically master's work. Turns the collected work into printable answer. 
         s+=stringarr[i];
 
     print s;

@@ -45,10 +45,14 @@ void slave(int row, int column, int array[row][column]) { /*Child function split
 
 void parent() { /*Adds up total using the results from child*/
 	FILE* newfile;
-	char *a; int i; char buffer[1024];
+	char *a; int i; char buffer[1024]; char newbuf;
 	newfile = fopen("somefile2.txt","r");
-	/*while ( fgets(buffer,1024,newfile) > 0 )
-		printf("%s",buffer);*/
+	while ( fgets(buffer,1024,newfile) > 0 ) {
+		sscanf(buffer,"%d",&newbuf);
+		printf("%s",buffer);
+		fclose(newfile;)
+	}
+		
 	
 	printf("I am the parent.\n");
 }

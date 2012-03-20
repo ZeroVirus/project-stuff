@@ -5,46 +5,42 @@
 #include <strings.h>
 #include <sys/file.h>
 
-void child(int row, int column, int array[row][column]);
+void slave(int row, int column, int array[row][column]);
 void parent();
 
 int main() {
 	pid_t pid;
-	int i=0,row =2 ,column =2,j,k,l=0;	
-	int array[2][2];
-	for (j=0;j<2;j++) {
-		for (k=0;k<2;k++) {
-			array[j][k] = 1;
+	int i=0,row =3 ,column =3,j,k,l=0;	
+	int array[3][3];
+	for (j=0;j<row;j++) {
+		for (k=0;k<column;k++) {
+			array[j][k] = 2;
 		}
 	}
 	
-	//while (i<2) {
 		for (i;i<row;i++) {	
-			if (pid = fork())
-				child(i,2,array); 
+			if ((pid = fork()) == 0)
+				slave(i,3,array); 
 			else
 				parent();
-		//i++;
 	}
-	//child(0,2,array);
-	//child(1,2,array);
 	
 	return 0;
 }
 
-void child(int row, int column, int array[row][column]) { /*Child function splits the array into rows and*/ 
+void slave(int row, int column, int array[row][column]) { /*Child function splits the array into rows and*/ 
 	int k,l,sum=0,lockt;								  /*individually adds up the sum of the rows when it is called*/
 	FILE* file;
 	for (k=0;k<column;k++) {
 		sum += array[row][k];	
 		printf("%d\n",sum);
 	}
-	printf("I am the child.\n");
-	file = fopen("somefile2.txt","w");
+	printf("I am the slave.\n");
+	file = fopen("somefile2.txt","a");
 	fprintf(file,"%d\n",sum);
 	fclose(file);	
 	exit(0);
-		return;
+	return;
 }
 
 void parent() { /*Adds up total using the results from child*/

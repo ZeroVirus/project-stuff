@@ -11,8 +11,8 @@
 
 
 
-/* prototype for thread routine */
-void handler ( void *ptr );
+/* prototype for worker thread routine */
+void workerjob ( void *ptr );
 
 /* global vars */
 /* semaphores are declared global so they can be accessed
@@ -31,7 +31,7 @@ int main()
 {
     int size=strlen(str);
     int i[2];
-    pthread_t thread_a;
+    pthread_t worker;
     //pthread_t thread_b;
 
     i[0] = 0; /* argument to threads */
@@ -43,8 +43,8 @@ int main()
     /* Note: you can check if thread has been successfully created by 	         checking return value of pthread_create */
     for (x = 0; x < (size / 2); ++x)
     {
-         pthread_create (&thread_a, NULL, (void *) &handler, (void *) &i[0]);
-         pthread_join(thread_a, NULL);
+         pthread_create (&worker, NULL, (void *) &workerjob, (void *) &i[0]);
+         pthread_join(worker, NULL);
     }
     sem_destroy(&mutex); /* destroy semaphore */
     printf("After being reversed, string is: %s \n", str);
@@ -53,7 +53,7 @@ int main()
     exit(0);
 } /* main() */
 
-void handler ( void *ptr )
+void workerjob ( void *ptr )
 {
     int size=strlen(str);
     

@@ -57,13 +57,11 @@ void workerjob ( void *ptr )
 {
     int size=strlen(str);
     
-    //printf("Thread %d: Waiting to enter critical region...\n", x);
     sem_wait(&mutex);       /* down semaphore */
     /* START CRITICAL REGION */
     c = str[(size - 1)- x];
     str[(size - 1) - x] = str[x];
     str[x] = c;
-    //printf("Thread %d: Exiting critical region...\n", x);
     printf("String is now: %s \n", str);
     /* END CRITICAL REGION */
     sem_post(&mutex);       /* up semaphore */

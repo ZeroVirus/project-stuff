@@ -3,9 +3,8 @@
 #include <stdlib.h>
 
 //USER DEFINED GLOBAL VARIABLES
-#define NUM_THREADS 10
-enum {numberofelements=1000};
-char string[]="DEVIL";
+enum {numberofelements=10000,NUM_THREADS=50};
+char string[]="DEVIL MAY CRY";
 
 //global variables
 int sizeofstring=0;

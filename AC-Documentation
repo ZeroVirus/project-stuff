@@ -1,0 +1,17 @@
+SYSTEM REQUIREMENTS:
+OS: POSIX Operating System with C/C++
+
+OVERVIEW:
+The code is outlined into 4 parts.  The first two parts are the worker functions. 
+
+"worker_sum" is the worker function that sums up an array.  The function gives each thread a chunk of the array and adds it, then adds the resulting chunk sum to a global variable that holds the sum of all the chunks.  The chunk of the aray is calculated as the ratio of elements/threads.
+
+"worker_reversestring" is the worker function that reverses a string.  The function assigns each thread to swap the first and last letter, second and second to last letter, etc.  Using this algorithm, the number of threads that are created is half the length of the string.
+
+The second two parts resides in the main function.  They both do the same type of job-creating threads and assigning a function to them.  The first part assigns each thread the "worker_sum" function, then waits for each thread to finish and prints out the sum of the array.  It also initializes the array by giving the index of the array as its value.  This is equivalent to a summation function that adds up "X" from X=0 to X=NUM_ELEMENTS.  The second part first finds the size of the string, then creates size/2 threads and assigns each thread the "worker_reversestring" function, then waits for each thread to finish and prints out the reversed string.
+
+DIRECTIONS:
+
+To compile, type in terminal- "gcc -pthread threading.c -o threading".  Then- "./threading" to run.
+
+In the "USER DEFINED GLOBAL VARIABLES" space, the three variables can be changed by the user.  "numberofelements" changes how many elements will be in the array that will be summed.  "NUM_THREADS" defines how many threads will compute the summation of the array.  "string" defines a string that will have its letters reveresed.

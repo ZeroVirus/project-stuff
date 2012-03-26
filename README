@@ -1,1 +1,9 @@
-bah
+Jay Master-Slave by: Klesti Muco
+
+Once in the directory which contains the original file pulled from github, this program is to be compiled using the terminal command gcc -o JMS Jay\ Master-Slave.c -Wall -lpthread (or -pthread instead of -lpthread, depending on which threading libraries are available on the machine) and then subsequently entering the terminal command ./JMS in order to run it.
+
+It uses a simple master-slave thread routine to reverse a string. The amount of "workers" is determined by the length of the string. It is equivalent to the floor of the int representing half of the length of the string, since it essentially swaps the first and last letters, the second and second-to-last letters, the third and third-to-last letters and so on. This makes it unnecessary to swap the middle letter, as it would only get swapped with itself. So, as one can see, the workers, in a sense, serve as each iteration of a loop to reverse a string, (which is probbaly the simplest known method to reverse a string).
+
+Unlike my first master-slave program which summed up the rows of an array, I used semaphores to protect the critical regions this time around. Everything seems to work well, with no know bugs. Many long strings were tried with no hiccups. The current string tested was "DEVIL RATS ON NO STAR LIVED" copied over multiple times to form an even bigger string where the reverse was easily discernible, and the result was still correct after running. Perhaps to see the results of each iteration from each worker, the user might consider using a shorter string like the aforementioned phrase but not copied over so many times. This point, however, raises some thoughts about taking in arguments from users. The final version will offer that support, however, for now, due to the need for speed testing above all else, I hardcoded the inputs.
+
+Now awaiting a runtime analysis and subsequent comparison with the other teammates' applications such as those using forks for their implementations.

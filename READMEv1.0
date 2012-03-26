@@ -1,0 +1,29 @@
+README for Independent Study Topic: Master Worker
+
+SYSTEM REQUIREMENT:
+GENERAL OS: UNIX/Linux (Ubuntu Preferred)
+Processor: Pentium 4 (1 GHz or higher)
+RAM: 512 MB
+Software: Python 2.7 or higher
+
+HOW TO RUN:
+1. Save File
+2. On terminal, execute command: python /dir (Change dir to to saved path
+3. On prompt, input a string that is 60 char or less
+4. Repeat Step 2 and 3 to test again.
+
+DESCRIPTIONS:
+1. The output prompt will display the names of all the process ID that is forked and its parent's ID. It will also display the reversed string. 
+
+1a. The script reverses the first two char of the string, the third and fourth char of the string, and so on. If the number of char is odd, the last char remains the same. 
+
+2. The script has a limitation of 60 characters (30 workers) on a 512MB memory. 
+
+3. The script forks a new process for each two char of the string. Each fork is responsible for reversing the two char assigned to them and sending them back to the master function. The master function then combines all the reversed string into a single array then prints the reversed string. 
+
+HISTORY:
+-Version v0.1 Initial version using threads
+-Version v0.5 First version using forks
+-Version v0.5b Code comment and header
+-Version v1.0 Tested for correctness and consistency. 
+(Number of char, time of execution, and bad inputs)

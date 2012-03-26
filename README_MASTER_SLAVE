@@ -1,0 +1,11 @@
+This is master slave implementation using forks. This progeram takes command line args i.e. :
+
+./MasterSlave 3 3 5
+
+where arg 1 is row, arg 2 is column, and arg 3 is the value in the array
+
+So the values can be anything, and it should run. 
+
+Also the created file is in the same directory where the program is, if MasterSlave.c is in Downloads then somefile2.txt will be in Downloads as well.
+When program outputs in terminal, it tends to not returm to the prompt, pressing enter will give the prompt.
+

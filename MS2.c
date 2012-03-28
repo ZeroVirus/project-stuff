@@ -43,7 +43,7 @@ void *threadFunc(void *arg)
 	while(i < 10)
 	{
 		subsum+=ary[j][i];
-		usleep(1);
+		//usleep(1);
 		printf("Worker %d says: %s\n",j+1,str);
 		++i;
 	}
@@ -62,20 +62,15 @@ int main(void)
 	while(j<10)
 	{
 		/* Create worker thread */
+		
 		pthread_create(&pth,NULL,threadFunc,"adding up the array...");
-
+		
 		//Lock the semaphore
 		//pthread_mutex_lock(&mymutex);
 
 		/* wait for our thread to finish before continuing */
 		pthread_join(pth, NULL /* void ** return value could go here */);
 
-		while(i < 10 )
-		{
-			usleep(1);
-			//printf("using usleep() to allow for next worker to partake in addition...\n");
-			++i;
-		}
 		j++;
 
 		//Unlock the semaphore

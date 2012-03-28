@@ -1,0 +1,18 @@
+Readme2 
+Program MS2 by: Klesti Muco
+
+Once in the directory which contains the original file pulled from github, this program is to be compiled using the terminal command gcc -pthread -o MS2 MS2.c (or -pthread instead of -lpthread, depending on which threading libraries are available on the machine) and then subsequently entering the terminal command ./MS2 in order to run it.
+
+The program uses the same basic master-worker routine as in the string reversal program. The amount of "workers" is determined by the amount of rows the 2 dimensional array has. Each worker's job is to basically add up the row that is given to it, and display that sum. After every worker has completed their job, the row sums are given back to the master and the master then displays the total sum of the array.
+
+Unlike the string-reversal program, I opted out of using semaphores. I merely tried locking and unlocking mutexes instead, but that lead to either very large or very small sums for the rows each time the program ran. (Something interesting I've noticed...the usleep(1) operation is not necessary when using pthread_join, however, when uncommenting the locking and unlocking of semaphores and commenting out pthread_join, having the usleep operations tends to keep the varying sums of each worker much lower than when omitting it altogether). Simply using pthread_join works quite well here, and by using ./time when we run the program we can see that the execution time is quite fast (roughly .004 ms with our current input). There are no know bugs. Each row was added up ahead of time via calculator, and the result of each row addition is shown below the hardcoded array for comparison and assuredness of correctness. The current two dimensional array tested was hardcoded into the program, simply because testing it would be far easier then having to take excessively large amounts of user input every time (eg. every single value for each row and column). 
+
+Runtime analysis complete.
+-using "time ./MS2" in the terminal after compiling-
+
+On average:
+real	0m0.005s
+user	0m0.000s
+sys	0m0.004s
+
+Awaiting comparison with the other teammates' applications.

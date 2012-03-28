@@ -27,3 +27,18 @@ HISTORY:
 -Version v0.5b Code comment and header
 -Version v1.0 Tested for correctness and consistency. 
 (Number of char, time of execution, and bad inputs)
+
+TESTING:
+# of Worker | Time | Memory
+2|.02|4.792kB
+4|.02|4.792kB
+6|.02|4.792kB
+8|.02|4.792kB
+10|.03|4.796kB
+12|.03|4.796kB
+14|.03|4.797kB
+16|.03|4.797kB
+18|.03|4.797kB
+20|.03|4.799kB
+25|.03|4.800kB
+30|.04|4.802kB

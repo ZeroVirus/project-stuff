@@ -9,9 +9,9 @@ void slave(int row, int column, int array[row][column], FILE *file);
 void parent();
 
 int main(int argc, char* argv[]) {
-	row = argv[1];             // New addition
-	column = argv[2];          // New Addition
-	val = argv[3];             // New Addition 
+	int row = atoi(argv[1]);             // New addition
+	int column = atoi(argv[2]);          // New Addition
+	int val = atoi(argv[3]);             // New Addition 
 	if (remove("somefile2.txt") != 0)
 		printf("Error removing file.");
 	else
@@ -20,10 +20,10 @@ int main(int argc, char* argv[]) {
 	somefile = fopen("somefile2.txt","a");    // New Add
 	pid_t pid;
 	int i=0,j,k,l=0;	
-	int array[row][col];
+	int array[row][column];
 	for (j=0;j<row;j++) {
 		for (k=0;k<column;k++) {
-			array[j][k] = va;;
+			array[j][k] = val;
 		}
 	}
 	

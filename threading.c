@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
 
     //Event to print out the final sum only after all threads have finished
     while(1){
-        if(fakeevent==sizeofstring/4){
+        if(fakeevent==sizeofstring/2){
             printf("The reversed string is %s\n", string);
             break;
         }

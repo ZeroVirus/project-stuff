@@ -42,3 +42,40 @@ TESTING:
 20|.03|4.799kB
 25|.03|4.800kB
 30|.04|4.802kB
+
+import os
+import math
+import time
+ 
+
+NEW TEST TO COMPARE TO PEERS:
+factor = 15;
+x = [[(i*10+j) for i in range(factor)] for j in range(factor)]
+ 
+ 
+def worker(rev):
+    return sum(rev);
+ 
+def master():
+    final=0;
+    for i in range(0,factor):
+        os.fork(); #Forks a new process
+        final = final + worker(x[i]);
+ 
+    return final;
+                           
+if __name__ == "__main__":
+    print "Summing up Array";
+    print master();
+
+
+
+
+15 workers: 4812 kB .03 sec
+14 workers: 4808 kB .02 sec
+12 workers: 4808 kb .02 sec
+10 workers: 4808 kb .02 sec
+6 workers:  4808 kB .02 sec
+3 workers: 4804 kb .02 sec
+1 worker: 4804 kb .02 sec
+ 
